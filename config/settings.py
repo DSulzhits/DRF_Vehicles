@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': BASE_DIR / 'drf_vehicles',
+        'NAME': 'drf_vehicles',
         'USER': 'postgres',
         'PASSWORD': os.getenv('POSTGRESSQL_KEY')
     }
