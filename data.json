@@ -3,24 +3,36 @@
     "model": "vehicle.car",
     "pk": 1,
     "fields": {
-      "title": "Skoda Rapid",
-      "description": "Good Car for Good Price"
+      "model": "Skoda Rapid",
+      "description": "Good Car for Good Price",
+      "year": 2012
     }
   },
   {
     "model": "vehicle.car",
     "pk": 2,
     "fields": {
-      "title": "Skoda Oktavia",
-      "description": "Excellent Car for Excellent Price"
+      "model": "Skoda Oktavia",
+      "description": "Excellent Car for Excellent Price",
+      "year": 2015
+    }
+  },
+  {
+    "model": "vehicle.car",
+    "pk": 3,
+    "fields": {
+      "model": "Toyota Mark II",
+      "description": "JDM",
+      "year": 1994
     }
   },
   {
     "model": "vehicle.motorcycle",
     "pk": 1,
     "fields": {
-      "title": "Kawasaki Ninja",
-      "description": "Powerful bike for good price"
+      "model": "Kawasaki Ninja",
+      "description": "Powerful bike for good price",
+      "year": 2018
     }
   },
   {
@@ -37,7 +49,7 @@
     "model": "vehicle.mileage",
     "pk": 2,
     "fields": {
-      "car": 1,
+      "car": 2,
       "motorcycle": null,
       "year": 2018,
       "mileage": 200000
