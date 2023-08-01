@@ -1,0 +1,56 @@
+[
+  {
+    "model": "vehicle.car",
+    "pk": 1,
+    "fields": {
+      "title": "Skoda Rapid",
+      "description": "Good Car for Good Price"
+    }
+  },
+  {
+    "model": "vehicle.car",
+    "pk": 2,
+    "fields": {
+      "title": "Skoda Oktavia",
+      "description": "Excellent Car for Excellent Price"
+    }
+  },
+  {
+    "model": "vehicle.motorcycle",
+    "pk": 1,
+    "fields": {
+      "title": "Kawasaki Ninja",
+      "description": "Powerful bike for good price"
+    }
+  },
+  {
+    "model": "vehicle.mileage",
+    "pk": 1,
+    "fields": {
+      "car": 1,
+      "motorcycle": null,
+      "year": 2015,
+      "mileage": 250000
+    }
+  },
+  {
+    "model": "vehicle.mileage",
+    "pk": 2,
+    "fields": {
+      "car": 1,
+      "motorcycle": null,
+      "year": 2018,
+      "mileage": 200000
+    }
+  },
+  {
+    "model": "vehicle.mileage",
+    "pk": 3,
+    "fields": {
+      "car": null,
+      "motorcycle": 1,
+      "year": 2020,
+      "mileage": 40000
+    }
+  }
+]
