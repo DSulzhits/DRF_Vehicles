@@ -30,7 +30,7 @@ class Mileage(models.Model):
     motorcycle = models.ForeignKey(Motorcycle, on_delete=models.CASCADE, blank=True, null=True)
 
     year = models.PositiveSmallIntegerField(default=0, verbose_name='год регистрации пробега')
-    mileage = models.PositiveSmallIntegerField(default=0, verbose_name='пробег')
+    mileage = models.PositiveIntegerField(default=0, verbose_name='пробег')
 
     def __str__(self):
         return f'{self.car if self.car else self.motorcycle} - {self.mileage} ({self.year})'
