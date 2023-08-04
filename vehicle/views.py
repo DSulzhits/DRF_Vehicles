@@ -1,34 +1,33 @@
 from rest_framework import viewsets, generics
 
-from vehicle.models import Car, Motorcycle
+from vehicle.models import Car, Motorcycle, Mileage
 from vehicle.serializers import CarSerializer, MotorcycleSerializer, MileageSerializer
 
 
-class CarViewSet(viewsets.ModelViewSet):
+class CarCreateAPIView(generics.CreateAPIView):
+    serializer_class = CarSerializer
+
+
+class CarRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = CarSerializer
     queryset = Car.objects.all()
 
 
-class MotorcycleCreateAPIView(generics.CreateAPIView):
+class CarListAPIView(generics.ListAPIView):
+    serializer_class = CarSerializer
+    queryset = Car.objects.all()
+
+
+class CarUpdateAPIView(generics.UpdateAPIView):  # поддерживает как PUT так и PATCH
+    serializer_class = CarSerializer
+
+
+class CarDestroyAPIView(generics.DestroyAPIView):
+    queryset = Car.objects.all()
+
+
+class MotorcycleViewSet(viewsets.ModelViewSet):
     serializer_class = MotorcycleSerializer
-
-
-class MotorcycleListAPIView(generics.ListAPIView):
-    serializer_class = MotorcycleSerializer
-    queryset = Motorcycle.objects.all()
-
-
-class MotorcycleRetrieveAPIView(generics.RetrieveAPIView):
-    serializer_class = MotorcycleSerializer
-    queryset = Motorcycle.objects.all()
-
-
-class MotorcycleUpdateAPIView(generics.UpdateAPIView):  # поддерживает как PUT так и PATCH
-    serializer_class = MotorcycleSerializer
-    queryset = Motorcycle.objects.all()
-
-
-class MotorcycleDestroyAPIView(generics.DestroyAPIView):
     queryset = Motorcycle.objects.all()
 
 
