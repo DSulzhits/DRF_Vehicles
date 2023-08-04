@@ -1,11 +1,12 @@
 from rest_framework import viewsets, generics
 
 from vehicle.models import Car, Motorcycle, Mileage
-from vehicle.serializers import CarSerializer, MotorcycleSerializer, MileageSerializer
+from vehicle.serializers import CarSerializer, MotorcycleSerializer, MileageSerializer, MotorcycleMileageSerializer, \
+    CarCreateSerializer
 
 
 class CarCreateAPIView(generics.CreateAPIView):
-    serializer_class = CarSerializer
+    serializer_class = CarCreateSerializer
 
 
 class CarRetrieveAPIView(generics.RetrieveAPIView):
@@ -33,3 +34,8 @@ class MotorcycleViewSet(viewsets.ModelViewSet):
 
 class MileageCreateAPIView(generics.CreateAPIView):
     serializer_class = MileageSerializer
+
+
+class MileageMotorcycleAPIView(generics.ListAPIView):
+    queryset = Mileage.objects.filter(motorcycle__isnull=False)
+    serializer_class = MotorcycleMileageSerializer
