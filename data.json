@@ -27,6 +27,15 @@
     }
   },
   {
+    "model": "vehicle.car",
+    "pk": 4,
+    "fields": {
+      "model": "Toyota Chaser",
+      "description": "JDM",
+      "year": 1995
+    }
+  },
+  {
     "model": "vehicle.motorcycle",
     "pk": 1,
     "fields": {
@@ -63,6 +72,26 @@
       "motorcycle": 1,
       "year": 2020,
       "mileage": 40000
+    }
+  },
+  {
+    "model": "vehicle.mileage",
+    "pk": 4,
+    "fields": {
+      "car": 3,
+      "motorcycle": null,
+      "year": 2020,
+      "mileage": 256000
+    }
+  },
+  {
+    "model": "vehicle.mileage",
+    "pk": 5,
+    "fields": {
+      "car": 4,
+      "motorcycle": null,
+      "year": 2021,
+      "mileage": 512000
     }
   }
 ]
