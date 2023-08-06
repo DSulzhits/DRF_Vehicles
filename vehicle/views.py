@@ -1,4 +1,6 @@
 from rest_framework import viewsets, generics
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import OrderingFilter
 
 from vehicle.models import Car, Motorcycle, Mileage
 from vehicle.serializers import CarSerializer, MotorcycleSerializer, MileageSerializer, MotorcycleMileageSerializer, \
@@ -39,3 +41,11 @@ class MileageCreateAPIView(generics.CreateAPIView):
 class MileageMotorcycleAPIView(generics.ListAPIView):
     queryset = Mileage.objects.filter(motorcycle__isnull=False)
     serializer_class = MotorcycleMileageSerializer
+
+
+class MileageListAPIView(generics.ListAPIView):
+    queryset = Mileage.objects.all()
+    serializer_class = MileageSerializer
+    filter_backends = [DjangoFilterBackend, OrderingFilter]
+    filterset_fields = ['car', 'motorcycle']
+    ordering_fields = ['year']
