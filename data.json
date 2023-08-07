@@ -5,7 +5,8 @@
     "fields": {
       "model": "Skoda Rapid",
       "description": "Good Car for Good Price",
-      "year": 2012
+      "year": 2012,
+      "owner": null
     }
   },
   {
@@ -14,7 +15,8 @@
     "fields": {
       "model": "Skoda Oktavia",
       "description": "Excellent Car for Excellent Price",
-      "year": 2015
+      "year": 2015,
+      "owner": null
     }
   },
   {
@@ -23,7 +25,8 @@
     "fields": {
       "model": "Toyota Mark II",
       "description": "JDM",
-      "year": 1994
+      "year": 1994,
+      "owner": null
     }
   },
   {
@@ -32,7 +35,38 @@
     "fields": {
       "model": "Toyota Chaser",
       "description": "JDM",
-      "year": 1995
+      "year": 1995,
+      "owner": null
+    }
+  },
+  {
+    "model": "vehicle.car",
+    "pk": 5,
+    "fields": {
+      "model": "Toyota Altezza",
+      "description": "JDM",
+      "year": 1999,
+      "owner": null
+    }
+  },
+  {
+    "model": "vehicle.car",
+    "pk": 6,
+    "fields": {
+      "model": "Toyota Altezza",
+      "description": "JDM",
+      "year": 1999,
+      "owner": null
+    }
+  },
+  {
+    "model": "vehicle.car",
+    "pk": 7,
+    "fields": {
+      "model": "Toyota Altezza 99",
+      "description": "JDM",
+      "year": 1999,
+      "owner": 1
     }
   },
   {
@@ -41,7 +75,8 @@
     "fields": {
       "model": "Kawasaki Ninja",
       "description": "Powerful bike for good price",
-      "year": 2018
+      "year": 2018,
+      "owner": null
     }
   },
   {
@@ -92,6 +127,36 @@
       "motorcycle": null,
       "year": 2021,
       "mileage": 512000
+    }
+  },
+  {
+    "model": "vehicle.mileage",
+    "pk": 6,
+    "fields": {
+      "car": 5,
+      "motorcycle": null,
+      "year": 2021,
+      "mileage": 350000
+    }
+  },
+  {
+    "model": "vehicle.mileage",
+    "pk": 7,
+    "fields": {
+      "car": 6,
+      "motorcycle": null,
+      "year": 2021,
+      "mileage": 350000
+    }
+  },
+  {
+    "model": "vehicle.mileage",
+    "pk": 8,
+    "fields": {
+      "car": 7,
+      "motorcycle": null,
+      "year": 2022,
+      "mileage": 375000
     }
   }
 ]
