@@ -1,10 +1,12 @@
 from django.db import models
+from django.conf import settings
 
 
 class Car(models.Model):
     model = models.CharField(max_length=150, verbose_name='название')
     description = models.TextField(verbose_name='описание')
     year = models.PositiveSmallIntegerField(default=0, verbose_name='год')
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return f'{self.model}'
@@ -18,6 +20,7 @@ class Motorcycle(models.Model):
     model = models.CharField(max_length=150, verbose_name='название')
     description = models.TextField(verbose_name='описание')
     year = models.PositiveSmallIntegerField(default=0, verbose_name='год')
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return f'{self.model}'
