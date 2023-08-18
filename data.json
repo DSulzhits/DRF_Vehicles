@@ -80,6 +80,26 @@
     }
   },
   {
+    "model": "vehicle.motorcycle",
+    "pk": 2,
+    "fields": {
+      "model": "Kawasaki e12dd ##",
+      "description": "Green-Devil",
+      "year": 2014,
+      "owner": null
+    }
+  },
+  {
+    "model": "vehicle.motorcycle",
+    "pk": 3,
+    "fields": {
+      "model": "Kawasaki e12dd",
+      "description": "Orange-Devil",
+      "year": 2014,
+      "owner": null
+    }
+  },
+  {
     "model": "vehicle.mileage",
     "pk": 1,
     "fields": {
