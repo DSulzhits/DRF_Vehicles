@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from vehicle.models import Car, Motorcycle, Mileage
 from vehicle.serializers import CarSerializer, MotorcycleSerializer, MileageSerializer, MotorcycleMileageSerializer, \
     CarCreateSerializer
+from vehicle.permissions import IsOwnerOrStaff
 
 
 class CarCreateAPIView(generics.CreateAPIView):
@@ -16,7 +17,6 @@ class CarCreateAPIView(generics.CreateAPIView):
         new_car = serializer.save()
         new_car.owner = self.request.user
         new_car.save()
-
 
 
 class CarRetrieveAPIView(generics.RetrieveAPIView):
@@ -31,6 +31,7 @@ class CarListAPIView(generics.ListAPIView):
 
 class CarUpdateAPIView(generics.UpdateAPIView):  # поддерживает как PUT так и PATCH
     serializer_class = CarSerializer
+    permission_classes = [IsOwnerOrStaff]
 
 
 class CarDestroyAPIView(generics.DestroyAPIView):
