@@ -7,6 +7,7 @@ from vehicle.models import Car, Motorcycle, Mileage
 from vehicle.serializers import CarSerializer, MotorcycleSerializer, MileageSerializer, MotorcycleMileageSerializer, \
     CarCreateSerializer
 from vehicle.permissions import IsOwnerOrStaff
+from vehicle.paginators import VehiclePaginator
 
 
 class CarCreateAPIView(generics.CreateAPIView):
@@ -42,6 +43,8 @@ class MotorcycleViewSet(viewsets.ModelViewSet):
     serializer_class = MotorcycleSerializer
     queryset = Motorcycle.objects.all()
     permission_classes = [IsAuthenticated]
+    pagination_class = VehiclePaginator
+
 
 
 class MileageCreateAPIView(generics.CreateAPIView):
