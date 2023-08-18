@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from vehicle.models import Car, Motorcycle, Mileage
+from vehicle.validators import TitleValidator
 
 
 class MileageSerializer(serializers.ModelSerializer):
@@ -41,6 +42,10 @@ class MotorcycleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Motorcycle
         fields = '__all__'
+        validators = [
+            TitleValidator(field='model'),
+            serializers.UniqueTogetherValidator(fields=['model', 'year'], queryset=Motorcycle.objects.all())
+        ]
 
     def get_last_mileage(self, instance):
         mileage = instance.mileage_set.all().last()
