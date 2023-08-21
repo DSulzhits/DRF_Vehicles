@@ -1,7 +1,7 @@
 from rest_framework import viewsets, generics
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from vehicle.models import Car, Motorcycle, Mileage
 from vehicle.serializers import CarSerializer, MotorcycleSerializer, MileageSerializer, MotorcycleMileageSerializer, \
@@ -42,9 +42,8 @@ class CarDestroyAPIView(generics.DestroyAPIView):
 class MotorcycleViewSet(viewsets.ModelViewSet):
     serializer_class = MotorcycleSerializer
     queryset = Motorcycle.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     pagination_class = VehiclePaginator
-
 
 
 class MileageCreateAPIView(generics.CreateAPIView):
