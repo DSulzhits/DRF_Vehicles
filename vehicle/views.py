@@ -33,6 +33,7 @@ class CarListAPIView(generics.ListAPIView):
 
 class CarUpdateAPIView(generics.UpdateAPIView):  # поддерживает как PUT так и PATCH
     serializer_class = CarSerializer
+    queryset = Car.objects.all()
     permission_classes = [IsOwnerOrStaff]
 
 
