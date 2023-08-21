@@ -156,3 +156,6 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     "https://read-and-write.example.com",
 ]
+
+CURRENCY_API_URL = os.getenv('CURRENCY_API_URL')
+CURRENCY_API_KEY = os.getenv('CURRENCY_API_KEY')
