@@ -11,6 +11,7 @@ from vehicle.paginators import VehiclePaginator
 
 
 class CarCreateAPIView(generics.CreateAPIView):
+    """Car create endpoint"""
     serializer_class = CarCreateSerializer
     permission_classes = [IsAuthenticated]
 
@@ -40,6 +41,7 @@ class CarDestroyAPIView(generics.DestroyAPIView):
 
 
 class MotorcycleViewSet(viewsets.ModelViewSet):
+    """ViewSet fot Motorcycles"""
     serializer_class = MotorcycleSerializer
     queryset = Motorcycle.objects.all()
     permission_classes = [AllowAny]
