@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from vehicle.models import Car, Motorcycle, Mileage
+from vehicle.services import convert_currencies
 from vehicle.validators import TitleValidator
 
 
@@ -31,9 +32,14 @@ class CarSerializer(serializers.ModelSerializer):
     # read_only чтобы можно было далее заполнять без необходимости указывать пробег
     # source='mileage_set' для передачи queryset (ссылка из пробега на машину)
 
+    usd_price = serializers.SerializerMethodField()
+
     class Meta:
         model = Car
         fields = '__all__'
+
+    def get_usd_price(self, instance):
+        return convert_currencies(instance.price)
 
 
 class MotorcycleSerializer(serializers.ModelSerializer):
