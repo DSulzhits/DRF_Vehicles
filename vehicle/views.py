@@ -8,6 +8,7 @@ from vehicle.serializers import CarSerializer, MotorcycleSerializer, MileageSeri
     CarCreateSerializer
 from vehicle.permissions import IsOwnerOrStaff
 from vehicle.paginators import VehiclePaginator
+from vehicle.tasks import check_mileage
 
 
 class CarCreateAPIView(generics.CreateAPIView):
@@ -29,6 +30,7 @@ class CarRetrieveAPIView(generics.RetrieveAPIView):
 class CarListAPIView(generics.ListAPIView):
     serializer_class = CarSerializer
     queryset = Car.objects.all()
+    pagination_class = VehiclePaginator
 
 
 class CarUpdateAPIView(generics.UpdateAPIView):  # поддерживает как PUT так и PATCH
@@ -51,6 +53,14 @@ class MotorcycleViewSet(viewsets.ModelViewSet):
 
 class MileageCreateAPIView(generics.CreateAPIView):
     serializer_class = MileageSerializer
+
+    def perform_create(self, serializer):
+        new_mileage = serializer.save()
+        if new_mileage.car:
+            check_mileage(new_mileage.car_id,
+                          'Car')  # после check mileage можно добавить delay и тогда будет отложенный вызов
+        else:
+            check_mileage(new_mileage.motorcycle_id, 'Motorcycle')
 
 
 class MileageMotorcycleAPIView(generics.ListAPIView):
