@@ -7,7 +7,7 @@ class Car(models.Model):
     description = models.TextField(verbose_name='описание')
     year = models.PositiveSmallIntegerField(default=0, verbose_name='год')
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
-    price = models.IntegerField(default=1000, verbose_name='цена')
+    price = models.DecimalField(max_digits=12, decimal_places=2, default=0)
 
     def __str__(self):
         return f'{self.model}'
@@ -22,6 +22,7 @@ class Motorcycle(models.Model):
     description = models.TextField(verbose_name='описание')
     year = models.PositiveSmallIntegerField(default=0, verbose_name='год')
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    price = models.DecimalField(max_digits=12, decimal_places=2, default=0)
 
     def __str__(self):
         return f'{self.model}'
