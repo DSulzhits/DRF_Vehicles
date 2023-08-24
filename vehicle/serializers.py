@@ -18,14 +18,14 @@ class CarMileageSerializer(serializers.ModelSerializer):
 
 
 class CarSerializer(serializers.ModelSerializer):
-    last_mileage = serializers.IntegerField(source='mileage_set.last.mileage', default=0, read_only=True)
+    last_mileage = serializers.IntegerField(source='mileage.last.mileage', default=0, read_only=True)
     # mileage_set это queryset, т.е. набор данных;
     # last/first это либо последние данные, либо первые зависит от ordering в модели Mileage;
     # mileage обращение к полю модели mileage
     # default базовое значение
     # read_only если мы хотим эти данные генерировать только для выдачи
 
-    mileage = CarMileageSerializer(many=True, read_only=True, source='mileage_set')
+    mileage = CarMileageSerializer(many=True, read_only=True, source='mileage.all')
 
     # для вывода всех пробегов реализуем переменную mileage куда передаем сериализатор CarMileageSerializer
     # many=True для вывода всех пробегов
@@ -54,7 +54,7 @@ class MotorcycleSerializer(serializers.ModelSerializer):
         ]
 
     def get_last_mileage(self, instance):
-        mileage = instance.mileage_set.all().last()
+        mileage = instance.mileage.all().last()
         if mileage:
             return mileage.mileage
         return 0
