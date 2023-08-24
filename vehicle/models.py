@@ -44,4 +44,4 @@ class Mileage(models.Model):
     class Meta:
         verbose_name = 'пробег'
         verbose_name_plural = 'пробеги'
-        ordering = ('year',)
+        ordering = ('-year',)
